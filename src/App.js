@@ -1,12 +1,13 @@
 import React, { PureComponent } from 'react'
 import map from 'lodash/map'
 import styled, { injectGlobal }  from 'styled-components'
+import Highlight from 'react-highlight.js'
 
 const examples = require.context('!raw-loader!./components', false, /\.js$/)
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: 20% 40% 40%;
+  grid-template-columns: auto 40% 1fr;
   grid-template-areas: "nav pre component";
 `
 
@@ -16,11 +17,14 @@ const Navigation = styled.ul`
   overflow: scroll;
 `
 
-const Source = styled.pre`
+const Source = styled(Highlight)`
   grid-area: pre;
-  height: 100vh;
-  overflow: scroll;
   margin: 0;
+
+  code {
+    height: 100vh;
+    overflow: scroll;
+  }
 `
 
 const Preview = styled.div`
@@ -68,7 +72,7 @@ class App extends PureComponent {
 
     return <Container>
       <Navigation>{links}</Navigation>
-      <Source>{source}</Source>
+      <Source language='javascript html xml'>{source}</Source>
       <Preview>{Component && <Component />}</Preview>
     </Container>
   }
