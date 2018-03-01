@@ -1,34 +1,33 @@
 import React, { PureComponent } from 'react'
 import styled from 'styled-components'
+import { Block } from './01-layout'
 
 const Container = styled.div`
   display: grid;
-  grid-template-areas:
-    "header  header  header"
-    "sidebar content content"
-    "footer  footer  footer";
-`
-export const Block = styled.div`
-  text-align: center;
+  height: 100%;
 `
 
-export const Header = Block.extend`
-  grid-area: header;
+const Header = Block.extend`
+  grid-column: 1 / span 3;
+  grid-row: 1 / 2;
   background: #81D4FA;
 `
 
-export const Sidebar = Block.extend`
-  grid-area: sidebar;
+const Sidebar = Block.extend`
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
   background: #FFF59D;
 `
 
-export const Content = Block.extend`
-  grid-area: content;
+const Content = Block.extend`
+  grid-column: 2 / 4;
+  grid-row: 2 / 3;
   background: #A5D6A7;
 `
 
-export const Footer = Block.extend`
-  grid-area: footer;
+const Footer = Block.extend`
+  grid-column: 1 / span 3;
+  grid-row: 3 / 4;
   background: #FFAB91;
 `
 

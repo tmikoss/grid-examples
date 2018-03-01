@@ -1,22 +1,29 @@
 import React, { PureComponent } from 'react'
 import styled from 'styled-components'
+import Buttons from '../Buttons'
 import { Header, Sidebar, Content, Footer } from './01-layout'
 
 const Container = styled.div`
   display: grid;
   height: 100%;
-  grid-template-columns: 100px auto 50%;
-  grid-template-rows: 10% 80% 10%;
+  align-items: ${props => props.align};
+  background: lightgrey;
   grid-template-areas:
     "header header header"
-    "sidebar . content"
+    "sidebar content content"
     "footer footer footer";
 `
 
 class Example extends PureComponent {
+  state = { align: 'stretch' }
+
   render() {
-    return <Container>
-      <Header>header</Header>
+    const { align } = this.state
+    return <Container align={align}>
+      <Header>
+        <div>align-items:</div>
+        <Buttons value={align} options={['stretch', 'start', 'end', 'center']} onChange={align => this.setState({ align })} />
+      </Header>
       <Footer>footer</Footer>
       <Sidebar>sidebar</Sidebar>
       <Content>content</Content>

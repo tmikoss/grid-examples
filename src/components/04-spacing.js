@@ -4,13 +4,14 @@ import { Header, Footer, Sidebar, Content } from './01-layout'
 
 const Container = styled.div`
   display: grid;
-  grid-row-gap: ${props => `${props.row * 10}px`};
-  grid-column-gap: ${props => `${props.column * 10}px`};
+  height: 100%;
+  grid-row-gap: ${props => `${props.row}em`};
+  grid-column-gap: ${props => `${props.column}em`};
   grid-template-areas:
     "header header header"
     "sidebar content content"
     "footer footer footer";
-  background: red;
+  background: lightgrey;
 `
 
 class Example extends PureComponent {
@@ -21,14 +22,16 @@ class Example extends PureComponent {
 
     return <Container row={row} column={column}>
       <Header>
-        <input type='range' min='0' max='10'
+        <div>grid-row-gap: {row}</div>
+        <input type='range' min='0' max='9'
           value={row}
           onChange={event => this.setState({ row: parseInt(event.target.value, 10) })} />
       </Header>
-      <Sidebar>row={row} column={column}</Sidebar>
-      <Content />
+      <Sidebar>sidebar</Sidebar>
+      <Content>content</Content>
       <Footer>
-        <input type='range' min='0' max='10'
+        <div>grid-column-gap: {column}</div>
+        <input type='range' min='0' max='9'
           value={column}
           onChange={event => this.setState({ column: parseInt(event.target.value, 10) })} />
       </Footer>

@@ -5,18 +5,27 @@ import { Header, Sidebar, Content, Footer } from './01-layout'
 const Container = styled.div`
   display: grid;
   height: 100%;
-  grid-template-columns: 100px auto 50%;
-  grid-template-rows: 10% 80% 10%;
   grid-template-areas:
     "header header header"
-    "sidebar . content"
+    "sidebar content content"
     "footer footer footer";
+
+  &.flipped {
+    grid-template-areas:
+      "footer footer footer"
+      "content content sidebar"
+      "header header header";
+  }
 `
 
 class Example extends PureComponent {
+  flip = () => this.container.classList.toggle('flipped')
+
   render() {
-    return <Container>
-      <Header>header</Header>
+    return <Container innerRef={node => this.container = node}>
+      <Header>
+        <button onClick={this.flip} type='button'>flip</button>
+      </Header>
       <Footer>footer</Footer>
       <Sidebar>sidebar</Sidebar>
       <Content>content</Content>

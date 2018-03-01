@@ -15,6 +15,9 @@ const Navigation = styled.ul`
   grid-area: nav;
   height: 100vh;
   overflow: scroll;
+  display: grid;
+  align-content: space-around;
+  margin: 0;
 `
 
 const Source = styled(Highlight)`
