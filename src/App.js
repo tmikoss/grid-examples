@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import map from 'lodash/map'
-import styled from 'styled-components'
+import styled, { injectGlobal }  from 'styled-components'
 
 const examples = require.context('!raw-loader!./components', false, /\.js$/)
 
@@ -12,14 +12,33 @@ const Container = styled.div`
 
 const Navigation = styled.ul`
   grid-area: nav;
+  height: 100vh;
+  overflow: scroll;
 `
 
 const Source = styled.pre`
   grid-area: pre;
+  height: 100vh;
+  overflow: scroll;
+  margin: 0;
 `
 
 const Preview = styled.div`
   grid-area: component;
+  height: 100vh;
+  overflow: scroll;
+`
+
+injectGlobal`
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
 `
 
 class App extends PureComponent {
