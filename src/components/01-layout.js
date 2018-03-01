@@ -9,22 +9,22 @@ const Container = styled.div`
     "footer footer footer";
 `
 
-const Header = styled.div`
+export const Header = styled.div`
   grid-area: header;
   background: #81D4FA;
 `
 
-const Sidebar = styled.div`
+export const Sidebar = styled.div`
   grid-area: sidebar;
   background: #FFF59D;
 `
 
-const Content = styled.div`
+export const Content = styled.div`
   grid-area: content;
   background: #A5D6A7;
 `
 
-const Footer = styled.div`
+export const Footer = styled.div`
   grid-area: footer;
   background: #FFAB91;
 `

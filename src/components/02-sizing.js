@@ -1,35 +1,16 @@
 import React, { PureComponent } from 'react'
 import styled from 'styled-components'
+import { Header, Sidebar, Content, Footer } from './01-layout'
 
 const Container = styled.div`
   display: grid;
   height: 100%;
-  grid-template-columns: 20% auto auto;
+  grid-template-columns: 1fr 2fr 100px;
   grid-template-rows: 10% 80% 10%;
   grid-template-areas:
     "header header header"
     "sidebar content content"
     "footer footer footer";
-`
-
-const Header = styled.div`
-  grid-area: header;
-  background: #81D4FA;
-`
-
-const Sidebar = styled.div`
-  grid-area: sidebar;
-  background: #FFF59D;
-`
-
-const Content = styled.div`
-  grid-area: content;
-  background: #A5D6A7;
-`
-
-const Footer = styled.div`
-  grid-area: footer;
-  background: #FFAB91;
 `
 
 class Example extends PureComponent {
