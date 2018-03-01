@@ -7,6 +7,7 @@ const Container = styled.div`
   display: grid;
   height: 100%;
   align-items: ${props => props.align};
+  justify-items: ${props => props.justify};
   background: lightgrey;
   grid-template-areas:
     "header header header"
@@ -15,16 +16,19 @@ const Container = styled.div`
 `
 
 class Example extends PureComponent {
-  state = { align: 'stretch' }
+  state = { align: 'stretch', justify: 'stretch' }
 
   render() {
-    const { align } = this.state
-    return <Container align={align}>
+    const { align, justify } = this.state
+    return <Container align={align} justify={justify}>
       <Header>
         <div>align-items:</div>
         <Buttons value={align} options={['stretch', 'start', 'end', 'center']} onChange={align => this.setState({ align })} />
       </Header>
-      <Footer>footer</Footer>
+      <Footer>
+        <div>justify-items:</div>
+        <Buttons value={justify} options={['stretch', 'start', 'end', 'center']} onChange={justify => this.setState({ justify })} />
+      </Footer>
       <Sidebar>sidebar</Sidebar>
       <Content>content</Content>
     </Container>

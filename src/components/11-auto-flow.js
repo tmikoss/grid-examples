@@ -7,6 +7,7 @@ import map from 'lodash/map'
 const Container = styled.div`
   display: grid;
   height: 100%;
+  background: lightgrey;
   grid-template-columns: repeat(auto-fill, 50px) [row-end];
   grid-template-rows: 100px repeat(auto-fill, 50px);
   grid-auto-flow: ${props => props.flow};

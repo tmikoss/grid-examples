@@ -5,6 +5,7 @@ import { Block } from './01-layout'
 const Container = styled.div`
   display: grid;
   height: 100%;
+  background: lightgrey;
   grid-auto-columns: 100px;
   grid-auto-rows: 100px;
 `

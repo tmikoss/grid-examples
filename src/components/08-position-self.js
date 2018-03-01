@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import styled from 'styled-components'
 import Buttons from '../Buttons'
-import { Header, Block, Content, Footer } from './01-layout'
+import { Header, Block, Sidebar, Footer } from './01-layout'
 
 const Container = styled.div`
   display: grid;
@@ -13,25 +13,28 @@ const Container = styled.div`
     "footer footer footer";
 `
 
-export const Sidebar = Block.extend`
-  grid-area: sidebar;
-  background: #FFF59D;
+export const Content = Block.extend`
+  grid-area: content;
+  background: #A5D6A7;
+  align-self: ${props => props.align};
   justify-self: ${props => props.justify};
 `
 
 class Example extends PureComponent {
-  state = { justify: 'stretch' }
+  state = { align: 'stretch', justify: 'stretch' }
 
   render() {
-    const { justify } = this.state
+    const { align, justify } = this.state
     return <Container>
       <Header>header</Header>
       <Footer>footer</Footer>
-      <Sidebar justify={justify}>
+      <Sidebar>content</Sidebar>
+      <Content align={align} justify={justify}>
+        <div>align-self:</div>
+        <Buttons value={align} options={['stretch', 'start', 'end', 'center']} onChange={align => this.setState({ align })} />
         <div>justify-self:</div>
         <Buttons value={justify} options={['stretch', 'start', 'end', 'center']} onChange={justify => this.setState({ justify })} />
-      </Sidebar>
-      <Content>content</Content>
+      </Content>
     </Container>
   }
 }

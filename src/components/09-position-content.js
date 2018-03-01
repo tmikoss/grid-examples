@@ -6,6 +6,7 @@ import { Header, Sidebar, Content, Footer } from './01-layout'
 const Container = styled.div`
   display: grid;
   height: 100%;
+  align-content: ${props => props.align};
   justify-content: ${props => props.justify};
   background: lightgrey;
   grid-template-areas:
@@ -15,16 +16,19 @@ const Container = styled.div`
 `
 
 class Example extends PureComponent {
-  state = { justify: 'stretch' }
+  state = { align: 'stretch', justify: 'stretch' }
 
   render() {
-    const { justify } = this.state
-    return <Container justify={justify}>
+    const { align, justify } = this.state
+    return <Container align={align} justify={justify}>
       <Header>
+        <div>align-content:</div>
+        <Buttons value={align} options={['stretch', 'start', 'end', 'center', 'space-around', 'space-between', 'space-evenly']} onChange={align => this.setState({ align })} />
+      </Header>
+      <Footer>
         <div>justify-content:</div>
         <Buttons value={justify} options={['stretch', 'start', 'end', 'center', 'space-around', 'space-between', 'space-evenly']} onChange={justify => this.setState({ justify })} />
-      </Header>
-      <Footer>footer</Footer>
+      </Footer>
       <Sidebar>sidebar</Sidebar>
       <Content>content</Content>
     </Container>
